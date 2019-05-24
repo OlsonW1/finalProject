@@ -1,6 +1,7 @@
 public class Player {
 
   int x, y;
+  int lives = 300;
   public Player(int x, int y) {
     x = this.x;
     y = this.y;
@@ -8,7 +9,7 @@ public class Player {
 
   void make() {
     fill(255, 255, 255);
-    rect(x, y, 50, 50);
+    rect(x, y, 30, 30);
   }
 
   void move() {
@@ -50,4 +51,36 @@ public class Player {
       bounds();
     }
   }
+  
+  public int getX(){
+    return x;
+  }
+  
+  public int getY(){
+   return y; 
+  }
+  public void detect(Bullet b) {
+    if((Math.abs(x - b.getX())) < 30 && Math.abs((y - b.getY())) < 30){
+      fill(255);
+      text("Lose", 300, 300);
+      lives--;
+      
+    }
+  }
+    public void detectCircles(Circle c) {
+    if((Math.abs(x - c.getX())) < 30 && Math.abs((y - c.getY())) < 30){
+      fill(255);
+      text("Lose", 300, 300);
+      lives--;
+      
+    }
+  }
+  void lives(){
+   fill(255);
+   text(lives, 600, 20);
+ }
+ 
+ public int getLives(){
+  return lives; 
+ }
 }

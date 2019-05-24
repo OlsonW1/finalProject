@@ -1,10 +1,10 @@
-public class Bullet{
+public class Circle{
   
   int x, y, xSpeed, ySpeed, size;
   PVector v1, v2;
   
   
-  public Bullet(){
+  public Circle(){
     x= 400;
     y= 400;    
     xSpeed = (int)(Math.random() * 6) - 3;
@@ -29,7 +29,7 @@ public class Bullet{
     void circleShow(){
     fill(196, 16, 16);
     noStroke();
-    ellipse(v1.x, v2.y, size, size);
+    ellipse(x, y, size, size);
   }
   
  void circlesMove(){
@@ -46,8 +46,8 @@ public class Bullet{
   
   }
   
-   public void bound(Bullet b) {
-    if(b.getX() >= 850 || b.getX() <= -50 || b.getY() >= 850 || b.getY()<= -50) {
+   public void bound(Circle c) {
+    if(c.getX() >= 850 || c.getX() <= -50 || c.getY() >= 850 || c.getY()<= -50) {
        x = 400;
       y = 400;
       
