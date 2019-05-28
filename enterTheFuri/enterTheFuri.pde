@@ -4,9 +4,11 @@ UserInterface ui = new UserInterface();
 Bullet[] bull = new Bullet[50];
 Bullet[] bull2 = new Bullet[50];
 Bullet[] bull3 = new Bullet[50];
+Bullet[] bull4 = new Bullet[50];
+Bullet[] bull5 = new Bullet[50];
 Bullet bul = new Bullet();
 
-Circle[] circles = new Circle[50];
+
 
 
 
@@ -16,14 +18,19 @@ void setup() {
 
 //creates bullet arrays
   for (int i = 0; i<bull.length; i++) {
-    bull[i] = new Bullet();
-    
+    bull[i] = new Bullet();   
   }
-  for (int i = 0; i<circles.length; i++) {
-    circles[i] = new Circle();
+   for (int i = 0; i<bull.length; i++) {
+    bull2[i] = new Bullet();   
+  }
+   for (int i = 0; i<bull.length; i++) {
+    bull3[i] = new Bullet();   
   }
   for (int i = 0; i<bull3.length; i++) {
-    bull3[i] = new Bullet();
+    bull4[i] = new Bullet();
+  }
+   for (int i = 0; i<bull.length; i++) {
+    bull5[i] = new Bullet();   
   }
   
 }
@@ -45,16 +52,20 @@ void draw() {
   
 //checks if bullets contact the palyer
 for(Bullet b: bull) {
-  p.detect(b);
-  
+  p.detect(b); 
 }
-for(Circle c: circles) {
-  p.detectCircles(c);
-  
+for(Bullet b: bull2) {
+  p.detect(b); 
 }
+
 for(Bullet b: bull3) {
   p.detect(b);
-  
+}
+for(Bullet b: bull4) {
+  p.detect(b);
+}
+for(Bullet b: bull5) {
+  p.detect(b);
 }
 
 //sends bullets out from the center
@@ -65,16 +76,31 @@ for(Bullet b: bull3) {
       bul.bulBounds();
     }
   }
-  if (ui.timer() > 5) {
-    for ( int i = 0; i<circles.length; i++) {
-      circles[i].show();
-      circles[i].move();
+    if (ui.timer() > 3) {
+    for ( int i = 0; i<bull2.length; i++) {
+      bull2[i].show();
+      bull2[i].moveCircles();
+      bul.bulBounds();
     }
   }
-  if (ui.timer() > 10) {
+  if (ui.timer() > 6) {
     for ( int i = 0; i<bull3.length; i++) {
       bull3[i].show();
-      bull3[i].move();
+      bull3[i].moveCircles();
+      bul.bulBounds();
+    }
+  }
+   if (ui.timer() > 9) {
+    for ( int i = 0; i<bull4.length; i++) {
+      bull4[i].show();
+      bull4[i].move();
+      bul.bulBounds();
+    }
+  }
+   if (ui.timer() > 12) {
+    for ( int i = 0; i<bull5.length; i++) {
+      bull5[i].show();
+      bull5[i].moveCircles();
       bul.bulBounds();
     }
   }

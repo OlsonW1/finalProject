@@ -1,8 +1,8 @@
 public class Player {
 
-  int x, y;
+  float x, y;
   int lives = 300;
-  public Player(int x, int y) {
+  public Player(float x, float y) {
     x = this.x;
     y = this.y;
   }
@@ -32,55 +32,44 @@ public class Player {
   void bounds() {
     if (x >= 850) {
       x = -50;
-    }
-   else if (y>=850) {
+    } else if (y>=850) {
       y = -50;
-    }
-   else if (x<-50) {
+    } else if (x<-50) {
       x = 850;
-    }
-  else  if (y<-50) {
+    } else  if (y<-50) {
       y = 850;
     }
   }
 
   void dash() {
     if (key == 'E' || key == 'e') {
-     int t = millis()/1000;
-     
+      int t = millis()/1000;
+
       bounds();
     }
   }
-  
-  public int getX(){
+
+  public float getX() {
     return x;
   }
+
+  public float getY() {
+    return y;
+  }
   
-  public int getY(){
-   return y; 
-  }
   public void detect(Bullet b) {
-    if((Math.abs(x - b.getX())) < 30 && Math.abs((y - b.getY())) < 30){
-      fill(255);
-      text("Lose", 300, 300);
+    if ((Math.abs(x - b.getX())) < 30 && Math.abs((y - b.getY())) < 30) {
       lives--;
-      
     }
   }
-    public void detectCircles(Circle c) {
-    if((Math.abs(x - c.getX())) < 30 && Math.abs((y - c.getY())) < 30){
-      fill(255);
-      text("Lose", 300, 300);
-      lives--;
-      
-    }
+
+
+  void lives() {
+    fill(255);
+    text(lives, 600, 20);
   }
-  void lives(){
-   fill(255);
-   text(lives, 600, 20);
- }
- 
- public int getLives(){
-  return lives; 
- }
+
+  public int getLives() {
+    return lives;
+  }
 }
