@@ -1,7 +1,7 @@
 public class Player {
 
   float x, y;
-  int lives = 300;
+  int lives = 100;
   public Player(float x, float y) {
     x = this.x;
     y = this.y;
@@ -9,7 +9,7 @@ public class Player {
 
   void make() {
     fill(255, 255, 255);
-    rect(x, y, 30, 30);
+    rect(x, y, 20, 20);
   }
 
   void move() {
@@ -58,10 +58,17 @@ public class Player {
   }
   
   public void detect(Bullet b) {
-    if ((Math.abs(x - b.getX())) < 30 && Math.abs((y - b.getY())) < 30) {
+    if ((Math.abs(x - b.getX())) < 20 && Math.abs((y - b.getY())) < 20) {
       lives--;
     }
   }
+  public void detect(Life L) {
+    if ((Math.abs(x - L.getLifeX())) < 20 && Math.abs((y - L.getLifeY())) < 20) {
+      lives+=20;
+      L.hideLife();
+    }
+  }
+ 
 
 
   void lives() {

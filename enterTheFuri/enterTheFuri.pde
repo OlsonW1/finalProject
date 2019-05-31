@@ -4,9 +4,9 @@ UserInterface ui = new UserInterface();
 Bullet[] bull = new Bullet[50];
 Bullet[] bull2 = new Bullet[50];
 Bullet[] bull3 = new Bullet[50];
-Bullet[] bull4 = new Bullet[50];
-Bullet[] bull5 = new Bullet[50];
 Bullet bul = new Bullet();
+Life L = new Life();
+
 
 
 
@@ -16,23 +16,17 @@ void setup() {
   background(0);
   size(800, 800);
 
-//creates bullet arrays
+  //creates bullet arrays
   for (int i = 0; i<bull.length; i++) {
-    bull[i] = new Bullet();   
+    bull[i] = new Bullet();
   }
-   for (int i = 0; i<bull.length; i++) {
-    bull2[i] = new Bullet();   
+  for (int i = 0; i<bull.length; i++) {
+    bull2[i] = new Bullet();
   }
-   for (int i = 0; i<bull.length; i++) {
-    bull3[i] = new Bullet();   
+  for (int i = 0; i<bull.length; i++) {
+    bull3[i] = new Bullet();
   }
-  for (int i = 0; i<bull3.length; i++) {
-    bull4[i] = new Bullet();
-  }
-   for (int i = 0; i<bull.length; i++) {
-    bull5[i] = new Bullet();   
-  }
-  
+   
 }
 
 void draw() {
@@ -46,29 +40,58 @@ void draw() {
   p.dash();
   p.lives();
 
+
+ 
   e.makeEnemy();
   
-
+     if (ui.timer() > 10 ) {
+    L.showLife();
+  }
+  if (ui.timer() > 15 ) {
   
-//checks if bullets contact the palyer
-for(Bullet b: bull) {
-  p.detect(b); 
-}
-for(Bullet b: bull2) {
-  p.detect(b); 
-}
+    L.showLife();
+  }
+  if (ui.timer() > 20) {
+  
+    L.showLife();
+  }
+  if (ui.timer() > 25 ) {
+    
+    L.showLife();
+  }
 
-for(Bullet b: bull3) {
-  p.detect(b);
-}
-for(Bullet b: bull4) {
-  p.detect(b);
-}
-for(Bullet b: bull5) {
-  p.detect(b);
-}
 
-//sends bullets out from the center
+
+  //checks if bullets contact the palyer
+
+  for (Bullet b : bull) {
+    p.detect(b);
+  }
+  for (Bullet b : bull2) {
+    p.detect(b);
+  }
+  for (Bullet b : bull3) {
+    p.detect(b);
+  }
+ p.detect(L);
+  
+
+
+  //sends back to start
+  // if (ui.timer()< 10) {
+  for (Bullet b : bull2) {
+    b.bound(b);
+  }
+
+  for (Bullet b : bull2) {
+    b.bound(b);
+  }
+  for (Bullet b : bull3) {
+    b.bound(b);
+  }
+  //}
+
+  //sends bullets out from the center
   if (ui.timer() > 0 ) {
     for ( int i = 0; i<bull.length; i++) {
       bull[i].show();
@@ -76,39 +99,31 @@ for(Bullet b: bull5) {
       bul.bulBounds();
     }
   }
-    if (ui.timer() > 3) {
+  if (ui.timer() > 3) {
     for ( int i = 0; i<bull2.length; i++) {
       bull2[i].show();
       bull2[i].moveCircles();
       bul.bulBounds();
     }
   }
-  if (ui.timer() > 6) {
-    for ( int i = 0; i<bull3.length; i++) {
+  if (ui.timer() > 5) {
+    for ( int i = 0; i<bull2.length; i++) {
       bull3[i].show();
       bull3[i].moveCircles();
       bul.bulBounds();
     }
   }
-   if (ui.timer() > 9) {
-    for ( int i = 0; i<bull4.length; i++) {
-      bull4[i].show();
-      bull4[i].move();
-      bul.bulBounds();
-    }
+
+
+
+
+  if (p.lives <0) {
+    noLoop();
+    fill(196, 16, 16);
+    rect(0, 0, 800, 800);
+    int score;
+    score = ui.timer();
+    fill(255);
+    text("Your score is: "+ score, 400, 400);
   }
-   if (ui.timer() > 12) {
-    for ( int i = 0; i<bull5.length; i++) {
-      bull5[i].show();
-      bull5[i].moveCircles();
-      bul.bulBounds();
-    }
-  }
-  
-  if (p.lives <0){
-    fill(196,16,16);
-    rect(0,0,800,800);
-  }
-  
-   
 }

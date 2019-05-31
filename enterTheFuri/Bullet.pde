@@ -8,14 +8,16 @@ public class Bullet {
     x= 400;
     y= 400;
    
-    xSpeed =(int)(Math.random() * 6) - 3;
-    ySpeed =(int)(Math.random() * 6) - 3;
+    xSpeed =(int)(Math.random() * 8) - 5;
+    ySpeed =(int)(Math.random() * 8) - 5;
     
     angle = (float)(Math.random() * 360);
-    mag = 4;//(float)(Math.random() * 6) - 3;
+    mag = 5;//(float)(Math.random() * 6) - 3;
 
     xCircleSpeed = mag * cos(angle);
     yCircleSpeed = mag * sin(angle);
+    
+
 
 
 
@@ -35,6 +37,8 @@ void move(){
     x += xCircleSpeed;
     y += yCircleSpeed;
   }
+  
+ 
 
 
 
